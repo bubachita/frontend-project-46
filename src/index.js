@@ -14,6 +14,7 @@ const parse = (data, extension) => {
     case 'yml':
       return load(data);
     default:
+      throw new Error(`unknown extension ${extension}`);
   }
 };
 
