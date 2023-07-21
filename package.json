@@ -9,6 +9,9 @@
   "author": "bubachita",
   "license": "ISC",
   "type": "module",
+  "jest": {
+    "transform": {}
+  },
   "bin": {
     "gendiff": "bin/gendiff.js"
   },
