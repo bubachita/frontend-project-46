@@ -1,22 +1,11 @@
 import _ from 'lodash';
-import { load } from 'js-yaml';
 import fs from 'fs';
 import path from 'path';
+import parse from './parsers.js';
 
 const getAbsolutePath = (filepath) => path.resolve(process.cwd(), filepath);
 const getData = (absolutePath) => fs.readFileSync(absolutePath);
 const getExtension = (absolutePath) => path.extname(absolutePath).slice(1);
-const parse = (data, extension) => {
-  switch (extension) {
-    case 'json':
-      return JSON.parse(data);
-    case 'yaml':
-    case 'yml':
-      return load(data);
-    default:
-      throw new Error(`unknown extension ${extension}`);
-  }
-};
 
 const buildTree = (data1, data2) => {
   const keys1 = _.keys(data1);
