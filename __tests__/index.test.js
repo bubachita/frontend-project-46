@@ -14,6 +14,6 @@ test.each([
 ])('gendiff', (extension1, extension2) => {
   const file1 = getFixturePath(`file1.${extension1}`);
   const file2 = getFixturePath(`file2.${extension2}`);
-  const result = fs.readFileSync(getFixturePath(`result.${extension1}.txt`), 'utf8');
+  const result = fs.readFileSync(getFixturePath(`result.${extension1}.txt`), 'utf-8');
   expect(genDiff(file1, file2)).toEqual(result);
 });
