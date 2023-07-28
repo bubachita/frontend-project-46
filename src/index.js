@@ -2,6 +2,7 @@ import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
 import parse from './parsers.js';
+import formatter from './formaters/index.js';
 
 const getAbsolutePath = (filepath) => path.resolve(process.cwd(), filepath);
 const getData = (absolutePath) => fs.readFileSync(absolutePath);
@@ -19,38 +20,24 @@ const buildTree = (data1, data2) => {
     if (!_.has(data2, key)) {
       return [key, { type: 'deleted', value: data1[key] }];
     }
-    if (data1[key] === data2[key]) {
-      return [key, { type: 'unchanged', value: data1[key] }];
+    if (_.isPlainObject(data1[key]) && _.isPlainObject(data2[key])) {
+      return [key, { type: 'nested', children: buildTree(data1[key], data2[key]) }];
     }
-    return [key, { type: 'changed', value1: data1[key], value2: data2[key] }];
+    if (data1[key] !== data2[key]) {
+      return [key, { type: 'changed', value1: data1[key], value2: data2[key] }];
+    }
+    return [key, { type: 'unchanged', value: data1[key] }];
   });
-  return tree;
+  return _.fromPairs(tree);
 };
 
-export default (filepath1, filepath2) => {
+export default (filepath1, filepath2, format = 'stylish') => {
   const path1 = getAbsolutePath(filepath1);
   const path2 = getAbsolutePath(filepath2);
   const data1 = parse(getData(path1), getExtension(path1));
   const data2 = parse(getData(path2), getExtension(path2));
 
   const tree = buildTree(data1, data2);
-  const result = tree.map(([key, info]) => {
-    const signs = {
-      added: '+',
-      deleted: '-',
-      unchanged: ' ',
-    };
-    switch (info.type) {
-      case 'added':
-      case 'deleted':
-      case 'unchanged':
-        return `  ${signs[info.type]} ${key}: ${info.value}`;
-      default:
-        return `  - ${key}: ${info.value1}\n  + ${key}: ${info.value2}`;
-    }
-  });
-  result.unshift('{');
-  result.push('}');
-
-  return result.join('\n');
+  const result = formatter(tree, format);
+  return result;
 };
