@@ -9,5 +9,8 @@
 Сравнение плоских объектов yaml
 [![asciicast](https://asciinema.org/a/G7QtW8z1So3xFhn8b7BzhqUjD.svg)](https://asciinema.org/a/G7QtW8z1So3xFhn8b7BzhqUjD)
 
-Сравнение вложенных объектов json и yaml
+Сравнение вложенных объектов json и yaml в формате stylish
 [![asciicast](https://asciinema.org/a/CtR67cmbbWwqiqLLcLwRqSJDu.svg)](https://asciinema.org/a/CtR67cmbbWwqiqLLcLwRqSJDu)
+
+Сравнение вложенных объектов json и yaml в формате plain
+[![asciicast](https://asciinema.org/a/VzvSvJufEfHFyfx5a6bBiDGEJ.svg)](https://asciinema.org/a/VzvSvJufEfHFyfx5a6bBiDGEJ)
