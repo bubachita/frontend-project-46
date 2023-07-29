@@ -11,9 +11,12 @@ test.each([
   ['json', 'json'],
   ['yaml', 'yaml'],
   ['yml', 'yml'],
-])('gendiff', (extension1, extension2) => {
+  ['json', 'json', 'plain'],
+  ['yaml', 'yaml', 'plain'],
+  ['yml', 'yml', 'plain'],
+])('gendiff', (extension1, extension2, format = 'stylish') => {
   const file1 = getFixturePath(`file1.${extension1}`);
   const file2 = getFixturePath(`file2.${extension2}`);
-  const result = fs.readFileSync(getFixturePath(`result.${extension1}.txt`), 'utf-8');
-  expect(genDiff(file1, file2)).toEqual(result);
+  const result = fs.readFileSync(getFixturePath(`result.${format}.txt`), 'utf-8');
+  expect(genDiff(file1, file2, format)).toEqual(result);
 });
