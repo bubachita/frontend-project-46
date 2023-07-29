@@ -36,7 +36,5 @@ export default (tree) => {
     return ['{', ...buildedResult, `${getBracketIndent(depth)}}`].join('\n');
   };
 
-  const result = iter(tree, 1);
-
-  return result;
+  return iter(tree, 1);
 };

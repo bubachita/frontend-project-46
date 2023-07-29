@@ -2,7 +2,7 @@ import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
 import parse from './parsers.js';
-import formatter from './formaters/index.js';
+import formatter from './formatters/index.js';
 
 const getAbsolutePath = (filepath) => path.resolve(process.cwd(), filepath);
 const getData = (absolutePath) => fs.readFileSync(absolutePath);
