@@ -14,6 +14,9 @@ test.each([
   ['json', 'json', 'plain'],
   ['yaml', 'yaml', 'plain'],
   ['yml', 'yml', 'plain'],
+  ['json', 'json', 'json'],
+  ['yaml', 'yaml', 'json'],
+  ['yml', 'yml', 'json'],
 ])('gendiff', (extension1, extension2, format = 'stylish') => {
   const file1 = getFixturePath(`file1.${extension1}`);
   const file2 = getFixturePath(`file2.${extension2}`);
