@@ -14,3 +14,6 @@
 
 Сравнение вложенных объектов json и yaml в формате plain
 [![asciicast](https://asciinema.org/a/VzvSvJufEfHFyfx5a6bBiDGEJ.svg)](https://asciinema.org/a/VzvSvJufEfHFyfx5a6bBiDGEJ)
+
+Сравнение вложенных объектов json и yaml в формате json
+[![asciicast](https://asciinema.org/a/GaONpQQkMnuX54a9ZXf34kcJ4.svg)](https://asciinema.org/a/GaONpQQkMnuX54a9ZXf34kcJ4)
